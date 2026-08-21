@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emberfall</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="game-container">
+    <canvas id="game" width="960" height="540"></canvas>
+
+    <!-- Start / Main Menu -->
+    <div id="menu" class="overlay">
+      <h1 class="title">EMBERFALL</h1>
+      <p class="subtitle">A precision platformer. It will try to kill you.</p>
+      <button id="start-btn" class="btn">START</button>
+      <div class="controls-hint">
+        <div class="control-row"><span class="key">← →</span><span class="key">A D</span> — Run</div>
+        <div class="control-row"><span class="key">Space</span><span class="key">W</span><span class="key">↑</span> — Jump</div>
+        <div class="control-row"><span class="key">Shift</span><span class="key">S</span><span class="key">↓</span> — Dash</div>
+        <div class="control-row"><span class="key">R</span> — Respawn</div>
+        <div class="control-row"><span class="key">Esc</span> — Pause</div>
+      </div>
+      <div class="toggle-row">
+        <label><input type="checkbox" id="checkpoint-toggle" checked /> One checkpoint per gauntlet</label>
+      </div>
+    </div>
+
+    <!-- Pause -->
+    <div id="pause" class="overlay hidden">
+      <h1 class="title">PAUSED</h1>
+      <button id="resume-btn" class="btn">RESUME</button>
+      <button id="restart-btn" class="btn secondary">RESTART GAUNTLET</button>
+      <p class="hint">Press ESC to resume</p>
+    </div>
+
+    <!-- You Died -->
+    <div id="died" class="overlay hidden">
+      <h1 class="died-title">YOU DIED</h1>
+      <p class="death-count">Deaths: <span id="death-count">0</span></p>
+      <button id="respawn-btn" class="btn">RESPAWN</button>
+      <p class="hint">Press R to respawn</p>
+    </div>
+
+    <!-- Victory -->
+    <div id="victory" class="overlay hidden">
+      <h1 class="victory-title">VICTORY</h1>
+      <p class="victory-msg">You mastered the embers.</p>
+      <p class="death-count">Total Deaths: <span id="death-count-final">0</span></p>
+      <button id="play-again-btn" class="btn">PLAY AGAIN</button>
+      <button id="menu-btn" class="btn secondary">BACK TO MENU</button>
+    </div>
+
+    <!-- HUD -->
+    <div id="hud" class="hidden">
+      <div id="gauntlet-name">GAUNTLET I</div>
+      <div id="hud-right">
+        <span id="death-hud">Deaths: 0</span>
+        <span id="timer">0.0s</span>
+      </div>
+    </div>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>

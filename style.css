@@ -1,0 +1,176 @@
+/* ============================================================
+   EMBERFALL — styles
+   Dark, high-contrast, Dark Souls / Celeste aesthetic.
+   ============================================================ */
+
+:root {
+  --bg: #0c0c10;
+  --panel: rgba(12, 12, 16, 0.82);
+  --ember: #ff7043;
+  --ember-bright: #ffb74d;
+  --ember-dim: #b4402a;
+  --text: #ece7df;
+  --danger: #d64545;
+  --hud: #cfc7ba;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  background: radial-gradient(circle at 50% 20%, #1a1520 0%, #08080a 70%);
+  font-family: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#game-container {
+  position: relative;
+  width: 960px;
+  height: 540px;
+  box-shadow: 0 0 60px rgba(255, 112, 67, 0.12), 0 0 0 1px #201a1e;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+#game {
+  display: block;
+  width: 960px;
+  height: 540px;
+  background: #0c0c10;
+  image-rendering: pixelated;
+}
+
+/* ---------- Overlays (menus / screens) ---------- */
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  background: var(--panel);
+  backdrop-filter: blur(3px);
+  text-align: center;
+  z-index: 10;
+}
+
+.overlay.hidden, #hud.hidden { display: none; }
+
+.title {
+  font-size: 64px;
+  letter-spacing: 10px;
+  font-weight: 800;
+  color: var(--ember-bright);
+  text-shadow: 0 0 24px rgba(255, 112, 67, 0.55), 0 3px 0 #7a2a12;
+}
+
+.died-title {
+  font-size: 72px;
+  letter-spacing: 12px;
+  font-weight: 900;
+  color: #e2e2e2;
+  text-shadow: 0 0 30px rgba(214, 69, 69, 0.4), 0 4px 0 #3a0d0d;
+  animation: died-fade 2.4s ease-in-out infinite alternate;
+}
+
+@keyframes died-fade {
+  from { opacity: 1; }
+  to { opacity: 0.55; }
+}
+
+.victory-title {
+  font-size: 68px;
+  letter-spacing: 10px;
+  font-weight: 900;
+  color: var(--ember-bright);
+  text-shadow: 0 0 36px rgba(255, 183, 77, 0.7);
+}
+
+.subtitle { font-size: 16px; color: #a9a298; letter-spacing: 1px; }
+.victory-msg { font-size: 18px; color: var(--ember-bright); font-style: italic; }
+
+.btn {
+  font-family: inherit;
+  font-size: 18px;
+  letter-spacing: 3px;
+  font-weight: 700;
+  color: var(--text);
+  background: transparent;
+  border: 2px solid var(--ember-dim);
+  padding: 12px 42px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.14s ease;
+}
+
+.btn:hover {
+  background: var(--ember);
+  color: #160a06;
+  box-shadow: 0 0 22px rgba(255, 112, 67, 0.6);
+}
+
+.btn.secondary {
+  border-color: #444;
+  margin-top: 6px;
+  font-size: 14px;
+  padding: 9px 26px;
+}
+
+.btn.secondary:hover { background: #333; box-shadow: none; color: #fff; }
+
+.hint { font-size: 13px; color: #766f64; margin-top: 6px; }
+
+.controls-hint {
+  margin-top: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid #2a2529;
+  border-radius: 6px;
+  padding: 16px 22px;
+  font-size: 14px;
+  color: #c7bfb2;
+}
+
+.control-row { display: flex; align-items: center; gap: 10px; padding: 4px 0; }
+
+.key {
+  display: inline-block;
+  min-width: 26px;
+  text-align: center;
+  background: #22201c;
+  border: 1px solid #3a352e;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 12px;
+  color: var(--ember-bright);
+}
+
+.toggle-row { margin-top: 4px; font-size: 13px; color: #b3ab9f; }
+.toggle-row input { vertical-align: middle; }
+
+.death-count { font-size: 20px; color: #b3ab9f; letter-spacing: 1px; }
+.death-count span { color: var(--danger); font-weight: 800; font-size: 26px; }
+
+/* ---------- HUD ---------- */
+#hud {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 18px;
+  pointer-events: none;
+  z-index: 5;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+}
+
+#gauntlet-name { color: var(--ember-bright); font-weight: 700; }
+#hud-right { display: flex; gap: 20px; }
+#death-hud { color: var(--danger); }
+#timer { color: var(--hud); }
